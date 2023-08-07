@@ -1,0 +1,140 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thermometer</title>
+ </head>
+ <style>
+    * {
+        padding: 0%;
+        margin: 0%;
+        font-family: 
+        monospace, Geneva, Tahoma, sans-serif;
+    }
+
+    body {
+        width: 100%;
+        height: 100%;
+        overflow: cover;
+        margin: 0;
+    }
+
+    #bg-video {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: fill;
+        z-index: -1;
+    }
+
+    .box {
+        width: 200px;
+        height: 200px;
+        margin: auto;
+        padding: 6%;
+        justify-content: fit;
+        background-color: rgba(204, 213, 126, 0.3);
+        border-radius: 360px;
+        border-color: black;
+    }
+
+    .title {
+        color: #222;
+        font-size: 2.0rem;
+        text-align: center;
+    }
+
+    .col {
+        flex-basis: 32%;
+        text-align: center;
+    }
+
+    .col label {
+        font-size: 18px;
+        font-weight: 555;
+        margin-bottom: 2px;
+        color: #2616da;
+    }
+
+    .col input {
+        width: 130px;
+        height: 20px;
+        background: white;
+        border-radius: 12px;
+        text-align: center;
+    }
+</style>
+<body>
+<video autoplay muted loop id="bg-video">
+    <source src="course-video.mp4" type="">
+
+
+   
+    <!-- Add more <source> elements for other video formats if needed -->
+</video>
+<div class="Main">
+    <div class="box">
+        <h1 class="title">Temperature<br>Converter</h1>
+        <div class="converter-row">
+            <div class="col">
+                <label>Fahrenheit</label>
+                <input type="number" id="fahrenheit">
+            </div>
+            <div class="col">
+                <label>Celsius</label>
+                <input type="number" id="celsius">
+            </div>
+            <div class="col">
+                <label>Kelvin</label>
+                <input type="number" id="kelvin">
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+
+    // Your temperature converter JavaScript code here...
+
+
+let celsius = 
+            document.getElementById('celsius');
+        let fahrenheit = 
+            document.getElementById('fahrenheit');
+        let kelvin = 
+            document.getElementById('kelvin');
+        celsius.oninput = function () {
+
+
+            let f = (parseFloat(celsius.value) * 9) / 5 + 32;
+            fahrenheit.value = parseFloat(f.toFixed(2));
+  
+
+            let k = (parseFloat(celsius.value) + 273.15);
+            kelvin.value = parseFloat(k.toFixed(2));
+         }
+         fahrenheit.oninput = function () {
+
+
+            let c = ((parseFloat(
+                fahrenheit.value) - 32) * 5) / 9;
+            celsius.value = parseFloat(c.toFixed(2));
+  
+
+            let k = (parseFloat(
+                fahrenheit.value) - 32) * 5 / 9 + 273.15;
+            kelvin.value = parseFloat(k.toFixed(2));
+         }
+         kelvin.oninput = function () { let f = (parseFloat(
+                kelvin.value) - 273.15) * 9 / 5 + 32;
+            fahrenheit.value = parseFloat(f.toFixed(2));
+  
+
+            let c = (parseFloat(kelvin.value) - 273.15);
+            celsius.value = parseFloat(c.toFixed(2));
+         }
+</script>
+</html>
